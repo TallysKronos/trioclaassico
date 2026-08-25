@@ -105,25 +105,25 @@ const members = [
   },
   {
     name: "Breno",
-    role: "Piano e direção musical",
+    role: "Piano",
     image: "raw-03.png",
     text: "Eu conduzo os arranjos e a consultoria musical para que a cerimônia tenha fluidez, intenção e emoção do início ao fim.",
   },
   {
     name: "Louise",
-    role: "Violino",
+    role: "Voz",
     image: "raw-10.png",
     text: "Eu cuido das melodias com presença e sensibilidade, para que cada nota acompanhe o significado de cada momento.",
   },
   {
     name: "João",
-    role: "Viola",
+    role: "Piano",
     image: "raw-12.png",
     text: "Eu trago textura e profundidade aos arranjos, criando uma base acolhedora para os momentos mais íntimos da cerimônia.",
   },
   {
     name: "Pierre",
-    role: "Violoncelo",
+    role: "Cordas (violino e violão)",
     image: "raw-15.png",
     text: "Eu sustento a emoção com o violoncelo, dando corpo, elegância e intensidade às passagens mais simbólicas do grande dia.",
   },
@@ -461,7 +461,7 @@ export default function HomeV2() {
 
       <section className="v2-section v2-warm" id="integrantes">
         <div className="v2-container v2-member-layout">
-          <Reveal>
+          <Reveal className="v2-member-heading">
             <p className="v2-kicker">Integrantes</p>
             <h2>Cada músico, uma camada da cerimônia.</h2>
             <p>

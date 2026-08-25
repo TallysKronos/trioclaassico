@@ -645,16 +645,23 @@
 }
 
 .v2-member-layout {
-  display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
-  gap: 60px;
-  align-items: center;
+  display: block;
 }
 
 .v2-member-grid {
   display: grid;
   gap: 22px;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: 42px;
+}
+
+.v2-member-heading {
+  max-width: 740px;
+}
+
+.v2-member-heading h2,
+.v2-member-heading p {
+  max-width: 720px;
 }
 
 .v2-member-card {
@@ -667,19 +674,19 @@
 
 .v2-member-card img {
   width: 100%;
-  height: 260px;
+  height: 220px;
   object-fit: cover;
 }
 
 .v2-member-card div {
-  padding: 24px;
+  padding: 22px;
 }
 
 .v2-member-card strong {
   display: block;
   color: #a6623f;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 400;
 }
 
@@ -1181,6 +1188,10 @@
   .v2-member-grid,
   .v2-process-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trio-member-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .v2-media-grid,
@@ -2266,18 +2277,22 @@ html {
 
 .trio-member-grid {
   display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 18px;
+  margin-top: 38px;
+}
+
+.trio-member-heading {
+  max-width: 720px;
 }
 
 .trio-member-card {
-  display: grid;
-  grid-template-columns: 132px 1fr;
-  gap: 22px;
-  align-items: center;
+  display: block;
+  overflow: hidden;
   border: 1px solid #d7ccc2;
   border-radius: 16px;
   background: #fbf7f2;
-  padding: 14px;
+  padding: 0;
   box-shadow: 0 20px 70px rgb(69 61 47 / 0.06);
   transition: transform 220ms ease, border-color 220ms ease;
 }
@@ -2288,17 +2303,20 @@ html {
 }
 
 .trio-member-card img {
-  width: 132px;
-  aspect-ratio: 1;
-  border-radius: 12px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
+}
+
+.trio-member-card div {
+  padding: 20px;
 }
 
 .trio-member-card span {
   display: block;
   color: #a6623f;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 30px;
+  font-size: 28px;
   line-height: 1.05;
 }
 
@@ -2814,6 +2832,10 @@ html {
   }
 
   .trio-gallery-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .trio-member-grid {
     grid-template-columns: 1fr;
   }
 
