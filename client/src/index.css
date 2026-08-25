@@ -2074,13 +2074,17 @@ html {
   font-style: italic;
 }
 
+#sobre.trio-section {
+  padding-block: clamp(56px, 6vw, 86px);
+}
+
 .trio-about-grid {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.78fr);
-  gap: clamp(30px, 4vw, 68px);
+  grid-template-columns: minmax(0, 0.92fr) minmax(390px, 0.86fr);
+  gap: clamp(18px, 3vw, 44px);
   align-items: center;
-  min-height: clamp(500px, 45vw, 650px);
+  min-height: clamp(430px, 38vw, 560px);
 }
 
 .trio-about-copy {
@@ -2109,7 +2113,7 @@ html {
 }
 
 .trio-about-copy .trio-copy {
-  max-width: 780px;
+  max-width: 720px;
   font-size: clamp(16px, 1.35vw, 20px);
   line-height: 1.72;
 }
@@ -2117,7 +2121,7 @@ html {
 .trio-about-visual {
   position: relative;
   align-self: stretch;
-  min-height: clamp(430px, 43vw, 620px);
+  min-height: clamp(430px, 38vw, 560px);
   overflow: hidden;
 }
 
@@ -2127,7 +2131,7 @@ html {
   height: 100%;
   min-height: inherit;
   object-fit: cover;
-  object-position: 56% 69%;
+  object-position: 54% 62%;
   filter: saturate(1.04) contrast(1.02);
 }
 
@@ -2519,51 +2523,8 @@ html {
 .trio-testimonial-feature {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(210px, 300px) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(30px, 5vw, 72px);
-  min-height: clamp(360px, 36vw, 470px);
-}
-
-.trio-testimonial-photo {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  aspect-ratio: 0.82;
-  border: 1px solid rgb(210 151 115 / 0.42);
-  background: #2c2b2a;
-  color: white;
-  box-shadow: 0 34px 90px rgb(0 0 0 / 0.3);
-}
-
-.trio-testimonial-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 44%, rgb(0 0 0 / 0.72));
-}
-
-.trio-testimonial-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 320ms ease, filter 320ms ease;
-}
-
-.trio-testimonial-photo:hover img {
-  transform: scale(1.04);
-  filter: saturate(1.08);
-}
-
-.trio-testimonial-photo span {
-  position: absolute;
-  inset: auto 18px 18px;
-  z-index: 1;
-  color: #fbf7f2;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 21px;
-  font-style: italic;
-  line-height: 1.1;
+  place-items: center;
+  min-height: clamp(290px, 29vw, 390px);
 }
 
 .trio-testimonial-content {
@@ -2584,11 +2545,11 @@ html {
 }
 
 .trio-testimonial-content blockquote {
-  max-width: 760px;
+  max-width: 860px;
   margin: 0;
   color: #fbf7f2;
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(38px, 4.2vw, 64px);
+  font-size: clamp(42px, 4.8vw, 68px);
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
@@ -2694,8 +2655,7 @@ html {
   }
 
   .trio-testimonial-feature {
-    grid-template-columns: minmax(190px, 250px) minmax(0, 1fr);
-    gap: 34px;
+    min-height: 330px;
   }
 
   .trio-testimonial-content blockquote {
@@ -2714,14 +2674,7 @@ html {
   }
 
   .trio-testimonial-feature {
-    grid-template-columns: 1fr;
-    justify-items: center;
     min-height: 0;
-  }
-
-  .trio-testimonial-photo {
-    width: min(310px, 72vw);
-    aspect-ratio: 1.02;
   }
 
   .trio-testimonial-arrow {
@@ -2735,16 +2688,16 @@ html {
   }
 
   .trio-testimonials-heading {
-    text-align: left;
+    text-align: center;
   }
 
   .trio-testimonials-heading .trio-kicker {
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .trio-testimonials-heading .trio-heading {
     inline-size: auto;
-    margin-inline: 0;
+    margin-inline: auto;
   }
 
   .trio-testimonial-stage {
@@ -2755,13 +2708,9 @@ html {
     gap: 26px;
   }
 
-  .trio-testimonial-photo {
-    width: min(100%, 360px);
-  }
-
   .trio-testimonial-content {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
   }
 
   .trio-testimonial-mark {
@@ -2781,7 +2730,7 @@ html {
   }
 
   .trio-testimonial-dots {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 
@@ -3561,9 +3510,9 @@ html {
 
 @media (max-width: 1180px) {
   .trio-react-page .trio-about-grid {
-    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.72fr);
-    gap: 30px;
-    min-height: 540px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(330px, 0.78fr);
+    gap: 24px;
+    min-height: 460px;
   }
 
   .trio-react-page .trio-heading {
@@ -3581,7 +3530,7 @@ html {
   }
 
   .trio-react-page .trio-about-visual {
-    min-height: 500px;
+    min-height: 460px;
   }
 }
 
@@ -3604,11 +3553,11 @@ html {
   }
 
   .trio-react-page .trio-about-visual {
-    min-height: 430px;
+    min-height: 420px;
   }
 
   .trio-react-page .trio-about-visual img {
-    object-position: 50% 70%;
+    object-position: 50% 62%;
   }
 
   .trio-react-page .trio-about-visual::before {
@@ -3644,12 +3593,12 @@ html {
   }
 
   .trio-react-page .trio-about-visual {
-    min-height: 360px;
+    min-height: 380px;
     margin-inline: -16px;
   }
 
   .trio-react-page .trio-about-visual img {
-    object-position: 51% 68%;
+    object-position: 51% 62%;
   }
 
   .trio-react-page .trio-about-visual::before {

@@ -577,11 +577,6 @@ export default function Home() {
                 exit={{ opacity: 0, y: -18 }}
                 transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
               >
-                <a className="trio-testimonial-photo" href={pagePath(`historias/${currentTestimonial.slug}`)}>
-                  <img src={asset(currentTestimonial.image)} alt={currentTestimonial.name} />
-                  <span>{currentTestimonial.song}</span>
-                </a>
-
                 <div className="trio-testimonial-content">
                   <Quote className="trio-testimonial-mark" />
                   <blockquote>“{currentTestimonial.text}”</blockquote>
