@@ -29,6 +29,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
+import { coupleStories } from "@/data/stories";
 
 const pagePath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
 const asset = (name: string) => pagePath(`figma-assets/${name}`);
@@ -40,6 +41,7 @@ const navItems = [
   { label: "Experiência", href: "#experiencia" },
   { label: "Formações", href: "#formacoes" },
   { label: "Momentos", href: "#momentos" },
+  { label: "Histórias", href: "#historias" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
   { label: "V1", href: pagePath("v1") },
@@ -128,26 +130,13 @@ const gallery = [
   { label: "Saída dos noivos", image: "raw-11.png" },
 ];
 
-const testimonials = [
-  {
-    name: "Juliana & Rafael",
-    date: "Casamento em Outubro de 2024",
-    image: "raw-12.png",
-    text: "Do primeiro contato à última música, sentimos segurança, cuidado e emoção. A cerimônia ficou com a nossa cara.",
-  },
-  {
-    name: "Mariana & Felipe",
-    date: "Casamento em Dezembro de 2024",
-    image: "raw-13.png",
-    text: "A música foi um dos pontos altos do nosso dia. Eles conduziram tudo com delicadeza e repertório impecável.",
-  },
-  {
-    name: "Camila & André",
-    date: "Casamento em Janeiro de 2025",
-    image: "raw-15.png",
-    text: "Escolher o Trio Clássico foi uma das melhores decisões que tomamos. Talento, sensibilidade e muita excelência.",
-  },
-];
+const testimonials = coupleStories.map((story) => ({
+  slug: story.slug,
+  name: story.name,
+  date: `Casamento em ${story.date}`,
+  image: story.image,
+  text: story.quote,
+}));
 
 const processSteps = [
   { icon: "frame-13.svg", step: "01", title: "Consultamos a data", text: "Confirmamos disponibilidade e entendemos local, horário e formato da cerimônia." },
@@ -510,6 +499,32 @@ export default function HomeV2() {
         </div>
       </section>
 
+      <section id="historias" className="v2-section v2-warm">
+        <div className="v2-container">
+          <Reveal className="v2-centered">
+            <p className="v2-kicker">Histórias dos casais</p>
+            <h2>Páginas para sentir como cada cerimônia aconteceu.</h2>
+            <p>
+              Cada história pode reunir relato, fotos e a música mais marcante daquele dia, criando uma experiência
+              mais íntima para quem está conhecendo o Trio Clássico.
+            </p>
+          </Reveal>
+          <div className="v2-story-grid">
+            {coupleStories.map((story) => (
+              <a className="v2-story-card" href={pagePath(`historias/${story.slug}`)} key={story.slug}>
+                <img src={asset(story.image)} alt={story.name} />
+                <div>
+                  <small>{story.song}</small>
+                  <h3>{story.name}</h3>
+                  <p>{story.summary}</p>
+                  <span>Entrar nessa história <ChevronRight /></span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="depoimentos" className="v2-section v2-dark">
         <div className="v2-container">
           <Reveal className="v2-centered">
@@ -517,7 +532,7 @@ export default function HomeV2() {
             <h2>O que nossos casais dizem.</h2>
           </Reveal>
           <div className="v2-testimonial-grid">
-            <article className="v2-testimonial-feature">
+            <a className="v2-testimonial-feature" href={pagePath(`historias/${testimonials[0].slug}`)}>
               <Quote />
               <p>{testimonials[0].text}</p>
               <Avatar className="size-16">
@@ -526,10 +541,11 @@ export default function HomeV2() {
               </Avatar>
               <strong>{testimonials[0].name}</strong>
               <span>{testimonials[0].date}</span>
-            </article>
+              <small className="v2-read-story">Ler história do casal</small>
+            </a>
             <div className="v2-testimonial-stack">
               {testimonials.slice(1).map((testimonial) => (
-                <article key={testimonial.name}>
+                <a key={testimonial.name} href={pagePath(`historias/${testimonial.slug}`)}>
                   <p>{testimonial.text}</p>
                   <div className="v2-testimonial-person">
                     <Avatar className="size-14">
@@ -541,7 +557,8 @@ export default function HomeV2() {
                       <small>{testimonial.date}</small>
                     </span>
                   </div>
-                </article>
+                  <small className="v2-read-story">Ler história</small>
+                </a>
               ))}
             </div>
           </div>
@@ -606,6 +623,7 @@ export default function HomeV2() {
           <nav>
             <a href="#experiencia">Experiência</a>
             <a href="#formacoes">Formações</a>
+            <a href="#historias">Histórias</a>
             <a href="#depoimentos">Depoimentos</a>
             <a href="#contato">Contato</a>
           </nav>

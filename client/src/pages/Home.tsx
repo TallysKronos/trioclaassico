@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
+import { coupleStories } from "@/data/stories";
 
 const pagePath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
 const asset = (name: string) => pagePath(`figma-assets/${name}`);
@@ -43,6 +44,7 @@ const navItems = [
   { label: "Integrantes", href: "#integrantes" },
   { label: "Momentos", href: "#momentos" },
   { label: "Galeria", href: "#galeria" },
+  { label: "Histórias", href: "#historias" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
   { label: "V2", href: pagePath("v2") },
@@ -122,26 +124,14 @@ const gallery = [
   { label: "Saída dos noivos" },
 ];
 
-const testimonials = [
-  {
-    name: "Juliana & Rafael",
-    date: "Casamento em Outubro de 2024",
-    image: "raw-12.png",
-    text: "Do primeiro contato à última música, sentimos segurança, cuidado e emoção. A cerimônia ficou com a nossa cara.",
-  },
-  {
-    name: "Mariana & Felipe",
-    date: "Casamento em Dezembro de 2024",
-    image: "raw-13.png",
-    text: "A música foi um dos pontos altos do nosso dia. Eles conduziram tudo com delicadeza e repertório impecável.",
-  },
-  {
-    name: "Camila & André",
-    date: "Casamento em Janeiro de 2025",
-    image: "raw-15.png",
-    text: "Escolher o Trio Clássico foi uma das melhores decisões que tomamos. Talento, sensibilidade e muita excelência.",
-  },
-];
+const testimonials = coupleStories.map((story) => ({
+  slug: story.slug,
+  name: story.name,
+  date: `Casamento em ${story.date}`,
+  image: story.image,
+  text: story.quote,
+  song: story.song,
+}));
 
 const processSteps = [
   { icon: "frame-13.svg", step: "PASSO 01", title: "Consulte sua data", text: "Verificamos disponibilidade e local." },
@@ -532,6 +522,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="historias" className="trio-section bg-[#f7f3ef]">
+        <div className="trio-container">
+          <SectionReveal className="text-center">
+            <p className="trio-kicker">Histórias dos casais</p>
+            <h2 className="trio-heading mx-auto">Cada casamento pode virar uma memória para ler, ver e ouvir.</h2>
+            <p className="trio-copy mx-auto">
+              A ideia é que cada casal tenha uma página com relato da cerimônia, fotos e a música que marcou aquele dia.
+            </p>
+          </SectionReveal>
+          <div className="trio-story-grid">
+            {coupleStories.map((story) => (
+              <a className="trio-story-card" key={story.slug} href={pagePath(`historias/${story.slug}`)}>
+                <img src={asset(story.image)} alt={story.name} />
+                <div>
+                  <small>{story.location}</small>
+                  <h3>{story.name}</h3>
+                  <p>{story.summary}</p>
+                  <span>Conhecer essa história <ChevronRight /></span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="depoimentos" className="trio-section bg-[#232424] text-white">
         <div className="trio-container">
           <SectionReveal className="text-center">
@@ -540,11 +555,13 @@ export default function Home() {
           </SectionReveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
-              <button
+              <a
                 key={testimonial.name}
+                href={pagePath(`historias/${testimonial.slug}`)}
                 className="trio-testimonial-card"
                 data-active={index === testimonialIndex}
-                onClick={() => setTestimonialIndex(index)}
+                onMouseEnter={() => setTestimonialIndex(index)}
+                onFocus={() => setTestimonialIndex(index)}
               >
                 <div className="trio-testimonial-top">
                   <Avatar className="size-14 border border-[#a6623f]/40">
@@ -556,7 +573,8 @@ export default function Home() {
                 <p>{testimonial.text}</p>
                 <strong>{testimonial.name}</strong>
                 <span>{testimonial.date}</span>
-              </button>
+                <small className="trio-testimonial-link">Ler a história do casal</small>
+              </a>
             ))}
           </div>
           <div className="mt-8 text-center text-[#b9b0a7]">
@@ -659,6 +677,7 @@ export default function Home() {
           <div className="trio-footer-list">
             <strong>Informações</strong>
             <a href="#galeria">Galeria</a>
+            <a href="#historias">Histórias</a>
             <a href="#depoimentos">Depoimentos</a>
             <a href="#contato">Contato</a>
           </div>

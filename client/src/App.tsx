@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import HomeV2 from "./pages/HomeV2";
+import StoryPage from "./pages/StoryPage";
 
 const routerBase = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -16,6 +17,7 @@ function Router() {
         <Route path={"/"} component={HomeV2} />
         <Route path={"/v1"} component={Home} />
         <Route path={"/v2"} component={HomeV2} />
+        <Route path={"/historias/:slug"} component={StoryPage} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
