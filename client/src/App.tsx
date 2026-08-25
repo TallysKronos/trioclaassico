@@ -14,7 +14,7 @@ function Router() {
   return (
     <WouterRouter base={routerBase}>
       <Switch>
-        <Route path={"/"} component={HomeV2} />
+        <Route path={"/"} component={Home} />
         <Route path={"/v1"} component={Home} />
         <Route path={"/v2"} component={HomeV2} />
         <Route path={"/historias/:slug"} component={StoryPage} />

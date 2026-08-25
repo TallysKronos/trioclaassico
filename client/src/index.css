@@ -654,7 +654,7 @@
 .v2-member-grid {
   display: grid;
   gap: 22px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 }
 
 .v2-member-card {
@@ -676,10 +676,21 @@
 }
 
 .v2-member-card strong {
+  display: block;
   color: #a6623f;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 32px;
   font-weight: 400;
+}
+
+.v2-member-card small {
+  display: block;
+  margin-top: 4px;
+  color: #82674f;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .v2-member-card p {
@@ -691,12 +702,12 @@
   position: relative;
   margin-top: 54px;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 22px;
 }
 
 .v2-timeline::before {
-  content: "";
+  content: none;
   position: absolute;
   left: 6%;
   right: 6%;
@@ -711,6 +722,9 @@
   display: grid;
   justify-items: center;
   gap: 14px;
+  border: 1px solid rgb(210 151 115 / 0.24);
+  border-radius: 16px;
+  padding: 22px 18px;
   text-align: center;
 }
 
@@ -730,6 +744,13 @@
   max-width: 140px;
   color: #fbf7f2;
   font-size: 15px;
+}
+
+.v2-timeline p {
+  margin: 8px 0 0;
+  color: #d7ccc2;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .v2-gallery-layout {
@@ -992,7 +1013,7 @@
   position: relative;
   margin-top: 44px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 24px;
 }
 
@@ -2274,10 +2295,21 @@ html {
 }
 
 .trio-member-card span {
+  display: block;
   color: #a6623f;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 30px;
   line-height: 1.05;
+}
+
+.trio-member-card small {
+  display: block;
+  margin-top: 4px;
+  color: #82674f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .trio-member-card p {
@@ -2299,21 +2331,25 @@ html {
 .trio-moment-line {
   margin-top: 44px;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px;
 }
 
 .trio-moment {
   position: relative;
   display: flex;
-  min-height: 94px;
+  min-height: 210px;
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  border: 1px solid rgb(166 98 63 / 0.24);
+  border-radius: 14px;
+  padding: 18px 14px;
   color: #b9b0a7;
 }
 
 .trio-moment:not(:last-child)::after {
-  content: "";
+  content: none;
   position: absolute;
   top: 18px;
   right: -50%;
@@ -2338,11 +2374,17 @@ html {
 }
 
 .trio-moment p {
-  max-width: 120px;
+  max-width: 170px;
   margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.25;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.trio-moment strong {
+  color: #fbf7f2;
+  font-size: 14px;
+  line-height: 1.2;
 }
 
 .trio-gallery-strip {

@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Calendar,
   ChevronLeft,
   ChevronRight,
   Heart,
@@ -36,6 +35,8 @@ const pagePath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
 const asset = (name: string) => pagePath(`figma-assets/${name}`);
 const lpAsset = (name: string) => pagePath(`lp-assets/${name}`);
 const logoAsset = pagePath("lp-assets/trio-classico-logo-transparent-cropped.png");
+const whatsappHref = "https://wa.me/5531998674394";
+const emailHref = "mailto:trioclassicomusica@gmail.com";
 
 const navItems = [
   { label: "Início", href: "#inicio" },
@@ -58,8 +59,8 @@ const pillars = [
   },
   {
     icon: Heart,
-    title: "Personalização completa",
-    text: "Auxiliamos na escolha de cada música e arranjo para traduzir a essência e estilo de vocês.",
+    title: "Consultoria Musical",
+    text: "Orientamos o casal na escolha das músicas, entradas e formação que melhor traduzem o estilo da cerimônia.",
   },
   {
     icon: Users,
@@ -78,42 +79,67 @@ const formations = [
   {
     title: "Trio Standard",
     image: "raw-05.png",
-    subtitle: "Violino, violoncelo e teclado",
+    subtitle: "Piano, violino e voz",
     text: "Formato versátil e elegante para cerimônias intimistas, com presença musical equilibrada do início ao fim.",
     ideal: "Ideal para cerimônias intimistas, capelas e espaços ao ar livre.",
   },
   {
     title: "Trio Plus",
     image: "raw-17.png",
-    subtitle: "Formação ampliada com voz ou instrumento extra",
+    subtitle: "Piano, violino, violoncelo e voz",
     text: "Uma experiência mais encorpada para casais que desejam momentos marcantes e arranjos com mais camadas.",
     ideal: "Ideal para casais que querem entradas mais impactantes e momentos de destaque.",
   },
   {
     title: "Trio Strings",
     image: "raw-06.png",
-    subtitle: "Cordas em destaque para cerimônias clássicas",
-    text: "Sonoridade refinada, acústica e atemporal para entradas, alianças, assinaturas e saída dos noivos.",
+    subtitle: "Violino, viola e violoncelo, acompanhados de voz e piano",
+    text: "Sonoridade refinada, com presença e elegância. Uma sensação de uma mini orquestra na sua cerimônia.",
     ideal: "Ideal para cerimônias com estética clássica, sofisticada e emocional.",
   },
 ];
 
 const members = [
   {
-    role: "Violino",
+    name: "Amanda",
+    role: "Voz",
     image: "raw-05.png",
-    text: "Conduz melodias principais com delicadeza, presença e leitura emocional de cada entrada.",
+    text: "Eu busco transformar cada entrada em uma memória viva, cantando com delicadeza e atenção à história de cada casal.",
   },
   {
-    role: "Violoncelo",
-    image: "raw-03.png",
-    text: "Sustenta a profundidade dos arranjos, trazendo calor e corpo para os momentos mais simbólicos.",
-  },
-  {
+    name: "Breno",
     role: "Piano e direção musical",
-    image: "raw-10.png",
-    text: "Organiza repertório, harmonia e transições para que a cerimônia tenha fluidez do começo ao fim.",
+    image: "raw-03.png",
+    text: "Eu conduzo os arranjos e a consultoria musical para que a cerimônia tenha fluidez, intenção e emoção do início ao fim.",
   },
+  {
+    name: "Louise",
+    role: "Violino",
+    image: "raw-10.png",
+    text: "Eu cuido das melodias com presença e sensibilidade, para que cada nota acompanhe o significado de cada momento.",
+  },
+  {
+    name: "João",
+    role: "Viola",
+    image: "raw-12.png",
+    text: "Eu trago textura e profundidade aos arranjos, criando uma base acolhedora para os momentos mais íntimos da cerimônia.",
+  },
+  {
+    name: "Pierre",
+    role: "Violoncelo",
+    image: "raw-15.png",
+    text: "Eu sustento a emoção com o violoncelo, dando corpo, elegância e intensidade às passagens mais simbólicas do grande dia.",
+  },
+];
+
+const ceremonyMoments = [
+  { title: "Padrinhos", text: "A celebração da união e a presença de quem faz parte da história do casal." },
+  { title: "Noivo", text: "Expectativa, emoção e a realização de estar prestes a viver um dos momentos mais importantes da sua vida." },
+  { title: "Noiva", text: "O ápice da expectativa. Um momento de encantamento, emoção e grandeza." },
+  { title: "Troca das Alianças", text: "Amor, compromisso e a promessa de uma vida compartilhada." },
+  { title: "Votos", text: "Intimidade, verdade e a expressão dos sentimentos mais profundos do casal." },
+  { title: "Beijo", text: "A celebração do amor e o instante em que a promessa se transforma em realidade." },
+  { title: "Saída dos Noivos", text: "Alegria, celebração e o início de uma nova história juntos." },
 ];
 
 const gallery = [
@@ -134,10 +160,11 @@ const testimonials = coupleStories.map((story) => ({
 }));
 
 const processSteps = [
-  { icon: "frame-13.svg", step: "PASSO 01", title: "Consulte sua data", text: "Verificamos disponibilidade e local." },
+  { icon: "frame-13.svg", step: "PASSO 01", title: "Faça seu orçamento", text: "Recebemos as informações principais da cerimônia para preparar uma proposta personalizada." },
   { icon: "frame-14.svg", step: "PASSO 02", title: "Conte sua história", text: "Entendemos estilo, cerimônia e referências." },
-  { icon: "frame-16.svg", step: "PASSO 03", title: "Criamos seu repertório", text: "Selecionamos músicas e arranjos." },
-  { icon: "frame-17.svg", step: "PASSO 04", title: "Vivemos esse momento", text: "Preparamos tudo para o grande dia." },
+  { icon: "frame-16.svg", step: "PASSO 03", title: "Consultoria Musical", text: "Orientamos vocês nas escolhas musicais e na construção da experiência da cerimônia." },
+  { icon: "frame-17.svg", step: "PASSO 04", title: "Ensaios", text: "Ensaiamos e gravamos para os noivos acompanharem o processo." },
+  { icon: "frame-5.svg", step: "PASSO 05", title: "Vivemos esse momento", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
 ];
 
 function BudgetDialog({ children }: { children: React.ReactNode }) {
@@ -145,7 +172,7 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    toast.success("Pedido recebido. Vamos retornar com disponibilidade e próximos passos.");
+    toast.success("Pedido recebido. Em breve entraremos em contato com uma proposta personalizada.");
     setOpen(false);
   }
 
@@ -154,7 +181,7 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-w-[560px] border-[#d7ccc2] bg-[#f7f3ef] p-0">
         <DialogHeader className="border-b border-[#d7ccc2] px-7 py-6">
-          <DialogTitle className="font-serif text-3xl font-normal text-[#2c2b2a]">Formulário de orçamento</DialogTitle>
+          <DialogTitle className="font-serif text-3xl font-normal text-[#2c2b2a]">Faça seu orçamento</DialogTitle>
           <DialogDescription className="text-[#53574e]">
             Conte alguns detalhes e retornamos com uma proposta personalizada.
           </DialogDescription>
@@ -210,7 +237,10 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
               <Textarea id="notes" name="notes" placeholder="Conte como imagina a cerimônia" className="min-h-24" />
             </Field>
           </FieldGroup>
-          <Button className="mt-5 h-12 w-full rounded bg-[#a6623f] text-white hover:bg-[#8e795e]">Enviar pedido</Button>
+          <p className="mt-4 text-xs leading-relaxed text-[#82674f]">
+            Usaremos essas informações apenas para retornar com uma proposta para a cerimônia.
+          </p>
+          <Button className="mt-5 h-12 w-full rounded bg-[#a6623f] text-white hover:bg-[#8e795e]">Enviar pedido de orçamento</Button>
         </form>
       </DialogContent>
     </Dialog>
@@ -263,7 +293,7 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <BudgetDialog>
             <Button className="hidden rounded bg-[#a6623f] px-6 text-xs font-semibold uppercase tracking-[.18em] text-white shadow-[0_0_14px_rgba(255,255,255,.28)] hover:bg-[#8e795e] md:inline-flex">
-              Consultar data
+              Faça seu orçamento
             </Button>
           </BudgetDialog>
           <Button
@@ -307,8 +337,8 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 pt-3">
               <BudgetDialog>
                 <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white shadow-[0_0_14px_rgba(255,255,255,.32)] hover:bg-[#8e795e]">
-                  Consultar disponibilidade
-                  <Calendar data-icon="inline-end" />
+                  Faça seu orçamento
+                  <ChevronRight data-icon="inline-end" />
                 </Button>
               </BudgetDialog>
               <Button
@@ -421,7 +451,7 @@ export default function Home() {
                 <CardFooter>
                   <BudgetDialog>
                     <Button variant="outline" className="w-full rounded border-[#d8cdbd] bg-transparent">
-                      Consultar
+                      Faça seu orçamento
                     </Button>
                   </BudgetDialog>
                 </CardFooter>
@@ -443,10 +473,11 @@ export default function Home() {
           </SectionReveal>
           <div className="trio-member-grid">
             {members.map((member) => (
-              <article className="trio-member-card" key={member.role}>
-                <img src={asset(member.image)} alt="" />
+              <article className="trio-member-card" key={member.name}>
+                <img src={asset(member.image)} alt={member.name} />
                 <div>
-                  <span>{member.role}</span>
+                  <span>{member.name}</span>
+                  <small>{member.role}</small>
                   <p>{member.text}</p>
                 </div>
               </article>
@@ -460,10 +491,11 @@ export default function Home() {
           <p className="trio-kicker">Cada momento, uma emoção</p>
           <h2 className="trio-heading mx-auto">Do início ao fim, a trilha perfeita para sua cerimônia.</h2>
           <div className="trio-moment-line">
-            {["Entrada dos Padrinhos", "Entrada do Noivo", "Entrada da Noiva", "Troca de Alianças", "Assinatura", "Saída dos Noivos"].map((item, index) => (
-              <div className="trio-moment" key={item}>
+            {ceremonyMoments.map((item, index) => (
+              <div className="trio-moment" key={item.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{item}</p>
+                <strong>{item.title}</strong>
+                <p>{item.text}</p>
               </div>
             ))}
           </div>
@@ -597,7 +629,7 @@ export default function Home() {
         <div className="trio-container text-center">
           <p className="trio-kicker">Como funciona</p>
           <h2 className="trio-heading mx-auto">Do primeiro contato ao grande dia.</h2>
-          <div className="mt-12 grid gap-7 md:grid-cols-4">
+          <div className="mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
             {processSteps.map(({ icon, step, title, text }) => (
               <div key={step} className="trio-process-step">
                 <span>
@@ -621,23 +653,25 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <BudgetDialog>
                 <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#8e795e]">
-                  Consultar disponibilidade
-                  <Calendar data-icon="inline-end" />
+                  Faça seu orçamento
+                  <ChevronRight data-icon="inline-end" />
                 </Button>
               </BudgetDialog>
-              <Button variant="ghost" className="h-12 rounded text-white hover:bg-white/10 hover:text-white">
+              <Button asChild variant="ghost" className="h-12 rounded text-white hover:bg-white/10 hover:text-white">
+                <a href={whatsappHref} target="_blank" rel="noreferrer">
                 Conversar pelo WhatsApp
                 <ChevronRight data-icon="inline-end" />
+                </a>
               </Button>
             </div>
           </div>
           <Card className="border-white/10 bg-white/5 text-white backdrop-blur">
             <CardContent className="flex flex-col gap-5 pt-6">
-              <a className="trio-contact-link" href="tel:+5511987654321">
+              <a className="trio-contact-link" href={whatsappHref} target="_blank" rel="noreferrer">
                 <Phone />
                 <span>
                   <small>WhatsApp</small>
-                  (11) 98765-4321
+                  (31) 99867-4394
                 </span>
               </a>
               <a className="trio-contact-link" href="https://instagram.com/trioclassico">
@@ -647,11 +681,11 @@ export default function Home() {
                   @trioclassico
                 </span>
               </a>
-              <a className="trio-contact-link" href="mailto:contato@trioclassico.com">
+              <a className="trio-contact-link" href={emailHref}>
                 <Mail />
                 <span>
                   <small>E-mail</small>
-                  contato@trioclassico.com
+                  trioclassicomusica@gmail.com
                 </span>
               </a>
             </CardContent>

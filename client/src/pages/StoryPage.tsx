@@ -133,9 +133,9 @@ export default function StoryPage({ params }: RouteComponentProps<StoryRoutePara
         <div className="story-container">
           <Music />
           <h2>Quer imaginar a trilha da sua cerimônia?</h2>
-          <p>Conte sobre o seu dia e vamos pensar, juntos, na música que pode transformar esse momento em memória.</p>
+          <p>Envie um pedido de orçamento e vamos pensar, juntos, na música que pode transformar esse momento em memória.</p>
           <Button asChild className="rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">
-            <a href={pagePath("#contato")}>Falar com o Trio Clássico</a>
+            <a href={pagePath("#contato")}>Faça seu orçamento</a>
           </Button>
         </div>
       </section>

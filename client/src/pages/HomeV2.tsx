@@ -14,7 +14,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import {
-  Calendar,
   ChevronRight,
   Heart,
   Instagram,
@@ -35,6 +34,8 @@ const pagePath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^
 const asset = (name: string) => pagePath(`figma-assets/${name}`);
 const lpAsset = (name: string) => pagePath(`lp-assets/${name}`);
 const logoAsset = pagePath("lp-assets/trio-classico-logo-transparent-cropped.png");
+const whatsappHref = "https://wa.me/5531998674394";
+const emailHref = "mailto:trioclassicomusica@gmail.com";
 
 const navItems = [
   { label: "Início", href: "#inicio" },
@@ -55,8 +56,8 @@ const benefits = [
   },
   {
     icon: Heart,
-    title: "Repertório criado com o casal",
-    text: "As escolhas musicais são construídas a partir da história, do estilo e da emoção que vocês querem viver.",
+    title: "Consultoria Musical",
+    text: "Orientamos o casal na escolha das músicas, entradas e formação que melhor traduzem o estilo da cerimônia.",
   },
   {
     icon: Users,
@@ -75,51 +76,67 @@ const formations = [
   {
     title: "Trio Standard",
     image: "raw-05.png",
-    subtitle: "Violino, violoncelo e teclado",
+    subtitle: "Piano, violino e voz",
     ideal: "Para cerimônias intimistas, capelas e espaços ao ar livre, com uma presença musical delicada e acolhedora.",
     features: ["Leveza para entradas", "Clima afetivo", "Sonoridade elegante"],
   },
   {
     title: "Trio Plus",
     image: "raw-17.png",
-    subtitle: "Formação ampliada com voz ou instrumento extra",
+    subtitle: "Piano, violino, violoncelo e voz",
     ideal: "Para casais que sonham com momentos mais marcantes, entradas cantadas e arranjos com mais camadas de emoção.",
     features: ["Entradas memoráveis", "Voz como destaque", "Arranjos mais envolventes"],
   },
   {
     title: "Trio Strings",
     image: "raw-06.png",
-    subtitle: "Cordas em destaque para cerimônias clássicas",
-    ideal: "Para cerimônias clássicas, sofisticadas e atemporais, onde as cordas conduzem a emoção com profundidade.",
-    features: ["Textura refinada", "Atmosfera solene", "Elegância acústica"],
+    subtitle: "Violino, viola e violoncelo, acompanhados de voz e piano",
+    ideal: "Sonoridade refinada, com presença e elegância. Uma sensação de uma mini orquestra na sua cerimônia.",
+    features: ["Textura refinada", "Presença e elegância", "Sensação de mini orquestra"],
   },
 ];
 
 const members = [
   {
-    role: "Violino",
+    name: "Amanda",
+    role: "Voz",
     image: "raw-05.png",
-    text: "Melodias principais, entradas e temas emocionais conduzidos com delicadeza.",
+    text: "Eu busco transformar cada entrada em uma memória viva, cantando com delicadeza e atenção à história de cada casal.",
   },
   {
-    role: "Violoncelo",
-    image: "raw-03.png",
-    text: "Profundidade, corpo e base harmônica para os momentos mais simbólicos.",
-  },
-  {
+    name: "Breno",
     role: "Piano e direção musical",
+    image: "raw-03.png",
+    text: "Eu conduzo os arranjos e a consultoria musical para que a cerimônia tenha fluidez, intenção e emoção do início ao fim.",
+  },
+  {
+    name: "Louise",
+    role: "Violino",
     image: "raw-10.png",
-    text: "Organização dos arranjos, transições e fluidez musical da cerimônia.",
+    text: "Eu cuido das melodias com presença e sensibilidade, para que cada nota acompanhe o significado de cada momento.",
+  },
+  {
+    name: "João",
+    role: "Viola",
+    image: "raw-12.png",
+    text: "Eu trago textura e profundidade aos arranjos, criando uma base acolhedora para os momentos mais íntimos da cerimônia.",
+  },
+  {
+    name: "Pierre",
+    role: "Violoncelo",
+    image: "raw-15.png",
+    text: "Eu sustento a emoção com o violoncelo, dando corpo, elegância e intensidade às passagens mais simbólicas do grande dia.",
   },
 ];
 
 const moments = [
-  "Entrada dos padrinhos",
-  "Entrada do noivo",
-  "Entrada da noiva",
-  "Troca de alianças",
-  "Assinatura",
-  "Saída dos noivos",
+  { title: "Padrinhos", text: "A celebração da união e a presença de quem faz parte da história do casal." },
+  { title: "Noivo", text: "Expectativa, emoção e a realização de estar prestes a viver um dos momentos mais importantes da sua vida." },
+  { title: "Noiva", text: "O ápice da expectativa. Um momento de encantamento, emoção e grandeza." },
+  { title: "Troca das Alianças", text: "Amor, compromisso e a promessa de uma vida compartilhada." },
+  { title: "Votos", text: "Intimidade, verdade e a expressão dos sentimentos mais profundos do casal." },
+  { title: "Beijo", text: "A celebração do amor e o instante em que a promessa se transforma em realidade." },
+  { title: "Saída dos Noivos", text: "Alegria, celebração e o início de uma nova história juntos." },
 ];
 
 const gallery = [
@@ -139,10 +156,11 @@ const testimonials = coupleStories.map((story) => ({
 }));
 
 const processSteps = [
-  { icon: "frame-13.svg", step: "01", title: "Consultamos a data", text: "Confirmamos disponibilidade e entendemos local, horário e formato da cerimônia." },
+  { icon: "frame-13.svg", step: "01", title: "Faça seu orçamento", text: "Recebemos as informações principais da cerimônia para preparar uma proposta personalizada." },
   { icon: "frame-14.svg", step: "02", title: "Ouvimos a história", text: "Conversamos sobre o casal, referências musicais e momentos que precisam ser lembrados." },
-  { icon: "frame-16.svg", step: "03", title: "Criamos a trilha", text: "Desenhamos a cerimônia como uma narrativa musical, com arranjos e transições cuidadosas." },
-  { icon: "frame-17.svg", step: "04", title: "Vivemos o dia com vocês", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
+  { icon: "frame-16.svg", step: "03", title: "Consultoria Musical", text: "Orientamos vocês nas escolhas musicais e na construção da experiência da cerimônia." },
+  { icon: "frame-17.svg", step: "04", title: "Ensaios", text: "Ensaiamos e gravamos para os noivos acompanharem o processo." },
+  { icon: "frame-5.svg", step: "05", title: "Vivemos esse momento", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
 ];
 
 function BudgetDialog({ children }: { children: React.ReactNode }) {
@@ -150,7 +168,7 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    toast.success("Pedido recebido. Vamos retornar com disponibilidade e próximos passos.");
+    toast.success("Pedido recebido. Em breve entraremos em contato com uma proposta personalizada.");
     setOpen(false);
   }
 
@@ -159,7 +177,7 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-w-[620px] border-[#d7ccc2] bg-[#f7f3ef] p-0">
         <DialogHeader className="border-b border-[#d7ccc2] px-7 py-6">
-          <DialogTitle className="font-serif text-4xl font-normal text-[#2c2b2a]">Conte sobre o seu dia</DialogTitle>
+          <DialogTitle className="font-serif text-4xl font-normal text-[#2c2b2a]">Faça seu orçamento</DialogTitle>
           <DialogDescription className="text-base text-[#52483e]">
             Envie os detalhes principais para começarmos a imaginar a trilha da cerimônia com vocês.
           </DialogDescription>
@@ -215,8 +233,11 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
               <Textarea id="v2-notes" placeholder="Conte como imagina a cerimônia" className="min-h-24" />
             </Field>
           </FieldGroup>
+          <p className="mt-4 text-xs leading-relaxed text-[#82674f]">
+            Usaremos essas informações apenas para retornar com uma proposta para a cerimônia.
+          </p>
           <Button className="mt-6 h-12 w-full rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">
-            Enviar pedido
+            Enviar pedido de orçamento
           </Button>
         </form>
       </DialogContent>
@@ -270,7 +291,7 @@ export default function HomeV2() {
         <div className="flex items-center gap-3">
           <BudgetDialog>
             <Button className="hidden h-11 rounded bg-[#a6623f] px-6 text-sm font-bold text-white hover:bg-[#704d3c] md:inline-flex">
-              Consultar data
+              Faça seu orçamento
             </Button>
           </BudgetDialog>
           <Button variant="ghost" size="icon" className="text-white xl:hidden" onClick={() => setMenuOpen((value) => !value)}>
@@ -301,8 +322,8 @@ export default function HomeV2() {
             <div className="v2-hero-actions">
               <BudgetDialog>
                 <Button className="h-12 rounded bg-[#a6623f] px-7 text-sm font-bold text-white hover:bg-[#704d3c]">
-                  Conte sobre o seu dia
-                  <Calendar data-icon="inline-end" />
+                  Faça seu orçamento
+                  <ChevronRight data-icon="inline-end" />
                 </Button>
               </BudgetDialog>
               <Button variant="outline" className="h-12 rounded border-white/45 bg-white/10 px-6 text-sm font-bold text-white hover:bg-white hover:text-[#232424]">
@@ -424,8 +445,13 @@ export default function HomeV2() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex-col items-stretch gap-4">
                   <span>Escolhida junto com o casal, a partir da história, do espaço e da emoção desejada.</span>
+                  <BudgetDialog>
+                    <Button className="h-11 rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">
+                      Faça seu orçamento
+                    </Button>
+                  </BudgetDialog>
                 </CardFooter>
               </Card>
             ))}
@@ -445,10 +471,11 @@ export default function HomeV2() {
           </Reveal>
           <div className="v2-member-grid">
             {members.map((member) => (
-              <article className="v2-member-card" key={member.role}>
-                <img src={asset(member.image)} alt="" />
+              <article className="v2-member-card" key={member.name}>
+                <img src={asset(member.image)} alt={member.name} />
                 <div>
-                  <strong>{member.role}</strong>
+                  <strong>{member.name}</strong>
+                  <small>{member.role}</small>
                   <p>{member.text}</p>
                 </div>
               </article>
@@ -465,9 +492,12 @@ export default function HomeV2() {
           </Reveal>
           <div className="v2-timeline">
             {moments.map((moment, index) => (
-              <article key={moment}>
+              <article key={moment.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{moment}</strong>
+                <div>
+                  <strong>{moment.title}</strong>
+                  <p>{moment.text}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -594,21 +624,23 @@ export default function HomeV2() {
             <div className="v2-hero-actions">
               <BudgetDialog>
                 <Button className="h-12 rounded bg-[#a6623f] px-7 text-sm font-bold text-white hover:bg-[#704d3c]">
-                  Conte sobre o seu dia
-                  <Calendar data-icon="inline-end" />
+                  Faça seu orçamento
+                  <ChevronRight data-icon="inline-end" />
                 </Button>
               </BudgetDialog>
-              <Button variant="outline" className="h-12 rounded border-white/45 bg-white/10 px-6 text-sm font-bold text-white hover:bg-white hover:text-[#232424]">
-                WhatsApp
-                <ChevronRight data-icon="inline-end" />
+              <Button asChild variant="outline" className="h-12 rounded border-white/45 bg-white/10 px-6 text-sm font-bold text-white hover:bg-white hover:text-[#232424]">
+                <a href={whatsappHref} target="_blank" rel="noreferrer">
+                  WhatsApp
+                  <ChevronRight data-icon="inline-end" />
+                </a>
               </Button>
             </div>
           </div>
           <Card className="v2-contact-card">
             <CardContent>
-              <a href="tel:+5511987654321"><Phone /> <span><small>WhatsApp</small>(11) 98765-4321</span></a>
+              <a href={whatsappHref} target="_blank" rel="noreferrer"><Phone /> <span><small>WhatsApp</small>(31) 99867-4394</span></a>
               <a href="https://instagram.com/trioclassico"><Instagram /> <span><small>Instagram</small>@trioclassico</span></a>
-              <a href="mailto:contato@trioclassico.com"><Mail /> <span><small>E-mail</small>contato@trioclassico.com</span></a>
+              <a href={emailHref}><Mail /> <span><small>E-mail</small>trioclassicomusica@gmail.com</span></a>
             </CardContent>
           </Card>
         </div>
