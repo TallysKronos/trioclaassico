@@ -2075,7 +2075,8 @@ html {
 }
 
 #sobre.trio-section {
-  padding-block: clamp(56px, 6vw, 86px);
+  overflow: hidden;
+  padding-block: 0;
 }
 
 .trio-about-grid {
@@ -2091,6 +2092,7 @@ html {
   position: relative;
   z-index: 2;
   max-width: 760px;
+  padding-block: clamp(58px, 7vw, 92px);
 }
 
 .trio-about-copy::before {
@@ -2121,7 +2123,7 @@ html {
 .trio-about-visual {
   position: relative;
   align-self: stretch;
-  min-height: clamp(430px, 38vw, 560px);
+  min-height: inherit;
   overflow: hidden;
 }
 
