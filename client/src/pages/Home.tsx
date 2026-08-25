@@ -436,7 +436,7 @@ export default function Home() {
             <p className="trio-kicker">Nossas formações</p>
             <h2 className="trio-heading mx-auto">A formação ideal para o seu casamento.</h2>
           </SectionReveal>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
+          <div className="trio-formation-grid mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-3">
             {formations.map((formation) => (
               <Card key={formation.title} className="trio-formation-card">
                 <img src={asset(formation.image)} alt={formation.title} />
@@ -585,7 +585,7 @@ export default function Home() {
             <p className="trio-kicker">Depoimentos</p>
             <h2 className="trio-heading mx-auto text-white">O que nossos casais dizem.</h2>
           </SectionReveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <div className="trio-testimonial-grid mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <a
                 key={testimonial.name}
@@ -629,7 +629,7 @@ export default function Home() {
         <div className="trio-container text-center">
           <p className="trio-kicker">Como funciona</p>
           <h2 className="trio-heading mx-auto">Do primeiro contato ao grande dia.</h2>
-          <div className="mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
+          <div className="trio-process-grid mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
             {processSteps.map(({ icon, step, title, text }) => (
               <div key={step} className="trio-process-step">
                 <span>
