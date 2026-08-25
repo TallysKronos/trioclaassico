@@ -292,7 +292,7 @@ export default function HomeV2() {
       <section id="inicio" className="v2-hero" style={heroStyle}>
         <div className="v2-container v2-hero-grid">
           <motion.div initial={{ y: 18 }} animate={{ y: 0 }} transition={{ duration: 0.7 }}>
-            <img src={lpAsset("musical-divider.svg")} alt="" className="v2-divider" />
+            <img src={lpAsset("separator.svg")} alt="" className="v2-divider" />
             <h1>Transformando o amor em música</h1>
             <p>
               Música ao vivo para cerimônias de casamento, criada com sensibilidade para acompanhar a história de cada

@@ -291,7 +291,7 @@
   width: 220px;
   height: auto;
   margin-bottom: 28px;
-  opacity: 0.9;
+  opacity: 0.86;
 }
 
 .v2-hero h1,
@@ -1986,10 +1986,9 @@ html {
 
 .trio-ornament {
   width: 220px;
-  height: 16px;
-  position: relative;
-  background: url("../lp-assets/musical-divider.svg") center / contain no-repeat;
-  opacity: 0.78;
+  height: 44px;
+  background: url("../lp-assets/separator.svg") left center / 180px auto no-repeat;
+  opacity: 0.84;
 }
 
 .trio-section {
@@ -2896,20 +2895,14 @@ html {
   }
 
   .ornament {
-    width: 168px;
-    height: 1px;
-    position: relative;
-    background: linear-gradient(90deg, rgb(255 255 255 / 0.35), rgb(255 255 255 / 0.05));
+    width: 180px;
+    height: 36px;
+    background: url("../lp-assets/separator.svg") left center / 150px auto no-repeat;
+    opacity: 0.82;
   }
 
   .ornament::after {
-    content: "◇";
-    position: absolute;
-    right: 9px;
-    top: 50%;
-    color: rgb(255 255 255 / 0.42);
-    transform: translateY(-52%);
-    font-size: 17px;
+    content: none;
   }
 
   .section-kicker {
