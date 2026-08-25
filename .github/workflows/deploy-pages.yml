@@ -41,6 +41,13 @@ jobs:
       - name: Prepare Pages artifact
         run: |
           cp dist/public/index.html dist/public/404.html
+          mkdir -p dist/public/v1 dist/public/v2
+          cp dist/public/index.html dist/public/v1/index.html
+          cp dist/public/index.html dist/public/v2/index.html
+          mkdir -p dist/public/historias/juliana-rafael dist/public/historias/mariana-felipe dist/public/historias/camila-andre
+          cp dist/public/index.html dist/public/historias/juliana-rafael/index.html
+          cp dist/public/index.html dist/public/historias/mariana-felipe/index.html
+          cp dist/public/index.html dist/public/historias/camila-andre/index.html
           touch dist/public/.nojekyll
 
       - name: Upload artifact
