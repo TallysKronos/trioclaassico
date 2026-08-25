@@ -355,7 +355,7 @@ export default function Home() {
       </section>
 
       <section id="sobre" className="trio-section bg-[#f7f3ef]">
-        <div className="trio-container grid gap-14 lg:grid-cols-[1fr_1.25fr] lg:items-center">
+        <div className="trio-container trio-about-grid">
           <SectionReveal>
             <p className="trio-kicker">Sobre nós</p>
             <h2 className="trio-heading">Mais que música, criamos memórias.</h2>
