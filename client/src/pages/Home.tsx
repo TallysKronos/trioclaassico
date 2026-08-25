@@ -552,47 +552,77 @@ export default function Home() {
       </section>
 
       <section id="depoimentos" className="trio-section bg-[#232424] text-white">
-        <div className="trio-container">
-          <SectionReveal className="text-center">
+        <div className="trio-container trio-testimonials-wrap">
+          <SectionReveal className="trio-testimonials-heading">
             <p className="trio-kicker">Depoimentos</p>
-            <h2 className="trio-heading mx-auto text-white">O que nossos casais dizem.</h2>
+            <h2 className="trio-heading text-white">O que nossos casais dizem.</h2>
           </SectionReveal>
-          <div className="trio-testimonial-grid mt-10 grid gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <a
-                key={testimonial.name}
-                href={pagePath(`historias/${testimonial.slug}`)}
-                className="trio-testimonial-card"
-                data-active={index === testimonialIndex}
-                onMouseEnter={() => setTestimonialIndex(index)}
-                onFocus={() => setTestimonialIndex(index)}
-              >
-                <div className="trio-testimonial-top">
-                  <Avatar className="size-14 border border-[#a6623f]/40">
-                    <AvatarImage src={asset(testimonial.image)} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.name.slice(0, 2)}</AvatarFallback>
-                  </Avatar>
-                  <Quote />
-                </div>
-                <p>{testimonial.text}</p>
-                <strong>{testimonial.name}</strong>
-                <span>{testimonial.date}</span>
-                <small className="trio-testimonial-link">Ler a história do casal</small>
-              </a>
-            ))}
-          </div>
-          <div className="mt-8 text-center text-[#b9b0a7]">
+
+          <div className="trio-testimonial-stage">
+            <button
+              type="button"
+              className="trio-testimonial-arrow"
+              onClick={() => setTestimonialIndex((index) => (index - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Ver depoimento anterior"
+            >
+              <ChevronLeft />
+            </button>
+
             <AnimatePresence mode="wait">
-              <motion.p
+              <motion.article
                 key={currentTestimonial.name}
-                initial={{ opacity: 0, y: 8 }}
+                className="trio-testimonial-feature"
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                className="text-sm"
+                exit={{ opacity: 0, y: -18 }}
+                transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
               >
-                Depoimento em destaque: {currentTestimonial.name}
-              </motion.p>
+                <a className="trio-testimonial-photo" href={pagePath(`historias/${currentTestimonial.slug}`)}>
+                  <img src={asset(currentTestimonial.image)} alt={currentTestimonial.name} />
+                  <span>{currentTestimonial.song}</span>
+                </a>
+
+                <div className="trio-testimonial-content">
+                  <Quote className="trio-testimonial-mark" />
+                  <blockquote>“{currentTestimonial.text}”</blockquote>
+                  <div className="trio-testimonial-person">
+                    <Avatar className="size-14 border border-[#d29773]/35">
+                      <AvatarImage src={asset(currentTestimonial.image)} alt={currentTestimonial.name} />
+                      <AvatarFallback>{currentTestimonial.name.slice(0, 2).toUpperCase()}</AvatarFallback>
+                    </Avatar>
+                    <span>
+                      <strong>{currentTestimonial.name}</strong>
+                      <small>{currentTestimonial.date}</small>
+                    </span>
+                  </div>
+                  <a className="trio-testimonial-link" href={pagePath(`historias/${currentTestimonial.slug}`)}>
+                    Ler a história do casal
+                    <ChevronRight data-icon="inline-end" />
+                  </a>
+                </div>
+              </motion.article>
             </AnimatePresence>
+
+            <button
+              type="button"
+              className="trio-testimonial-arrow"
+              onClick={() => setTestimonialIndex((index) => (index + 1) % testimonials.length)}
+              aria-label="Ver próximo depoimento"
+            >
+              <ChevronRight />
+            </button>
+          </div>
+
+          <div className="trio-testimonial-dots" aria-label="Selecionar depoimento">
+            {testimonials.map((testimonial, index) => (
+              <button
+                type="button"
+                key={testimonial.name}
+                aria-label={`Ver depoimento de ${testimonial.name}`}
+                aria-current={index === testimonialIndex}
+                onClick={() => setTestimonialIndex(index)}
+              />
+            ))}
           </div>
         </div>
       </section>
