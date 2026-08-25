@@ -3111,7 +3111,7 @@ html {
 .trio-cta {
   position: relative;
   overflow: hidden;
-  padding-block: 72px;
+  padding-block: clamp(54px, 6vw, 84px);
   color: white;
   background: #232424;
 }
@@ -3129,7 +3129,22 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(15 17 13 / 0.52);
+  background:
+    linear-gradient(90deg, rgb(15 17 13 / 0.78), rgb(15 17 13 / 0.56) 44%, rgb(15 17 13 / 0.72)),
+    radial-gradient(circle at 68% 50%, rgb(210 151 115 / 0.16), transparent 34%);
+}
+
+.trio-cta-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.64fr);
+  align-items: center;
+  gap: clamp(34px, 6vw, 88px);
+}
+
+.trio-cta-copy {
+  max-width: 680px;
 }
 
 .trio-cta h2 {
@@ -3145,25 +3160,85 @@ html {
   color: #d7ccc2;
 }
 
-.trio-contact-link {
+.trio-cta-actions {
+  margin-top: 30px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  color: white;
+}
+
+.trio-cta-contacts {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding-left: clamp(26px, 4vw, 54px);
+}
+
+.trio-cta-contacts::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgb(210 151 115 / 0.54), transparent);
+}
+
+.trio-contact-link {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  color: #fbf7f2;
   font-weight: 700;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .trio-contact-link svg {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   color: #d29773;
+  stroke-width: 1.75;
 }
 
 .trio-contact-link small {
   display: block;
   color: #d7ccc2;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.trio-contact-link:hover {
+  transform: translateX(4px);
+  color: #d29773;
+}
+
+@media (max-width: 900px) {
+  .trio-cta-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .trio-cta-contacts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    border-top: 1px solid rgb(210 151 115 / 0.24);
+    padding-top: 26px;
+    padding-left: 0;
+  }
+
+  .trio-cta-contacts::before {
+    content: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .trio-cta-contacts {
+    grid-template-columns: 1fr;
+  }
 }
 
 .trio-footer-list {

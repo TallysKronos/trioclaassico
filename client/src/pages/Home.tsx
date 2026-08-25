@@ -651,11 +651,11 @@ export default function Home() {
 
       <section id="contato" className="trio-cta">
         <img src={asset("raw-16.png")} alt="" />
-        <div className="trio-container relative z-10 grid gap-10 lg:grid-cols-[1fr_340px] lg:items-center">
-          <div>
+        <div className="trio-container trio-cta-layout">
+          <div className="trio-cta-copy">
             <h2>Vamos emocionar juntos?</h2>
             <p>Conte-nos um pouco sobre o seu casamento.</p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="trio-cta-actions">
               <BudgetDialog>
                 <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#8e795e]">
                   Faça seu orçamento
@@ -670,31 +670,29 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <Card className="border-white/10 bg-white/5 text-white backdrop-blur">
-            <CardContent className="flex flex-col gap-5 pt-6">
-              <a className="trio-contact-link" href={whatsappHref} target="_blank" rel="noreferrer">
-                <Phone />
-                <span>
-                  <small>WhatsApp</small>
-                  (31) 99867-4394
-                </span>
-              </a>
-              <a className="trio-contact-link" href="https://instagram.com/trioclassico">
-                <Instagram />
-                <span>
-                  <small>Instagram</small>
-                  @trioclassico
-                </span>
-              </a>
-              <a className="trio-contact-link" href={emailHref}>
-                <Mail />
-                <span>
-                  <small>E-mail</small>
-                  trioclassicomusica@gmail.com
-                </span>
-              </a>
-            </CardContent>
-          </Card>
+          <div className="trio-cta-contacts" aria-label="Canais de contato">
+            <a className="trio-contact-link" href={whatsappHref} target="_blank" rel="noreferrer">
+              <Phone />
+              <span>
+                <small>WhatsApp</small>
+                (31) 99867-4394
+              </span>
+            </a>
+            <a className="trio-contact-link" href="https://instagram.com/trioclassico">
+              <Instagram />
+              <span>
+                <small>Instagram</small>
+                @trioclassico
+              </span>
+            </a>
+            <a className="trio-contact-link" href={emailHref}>
+              <Mail />
+              <span>
+                <small>E-mail</small>
+                trioclassicomusica@gmail.com
+              </span>
+            </a>
+          </div>
         </div>
       </section>
 
