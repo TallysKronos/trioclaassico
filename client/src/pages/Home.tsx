@@ -16,7 +16,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
-  Heart,
   Instagram,
   Mail,
   Menu,
@@ -24,7 +23,6 @@ import {
   Phone,
   Play,
   Quote,
-  Users,
   X,
 } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -49,24 +47,6 @@ const navItems = [
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
   { label: "V2", href: pagePath("v2") },
-];
-
-const pillars = [
-  {
-    icon: Music,
-    title: "Especialistas em cerimônias",
-    text: "Foco absoluto no cronograma, acústica e dinâmica emocional perfeitas para cada momento do rito.",
-  },
-  {
-    icon: Heart,
-    title: "Consultoria Musical",
-    text: "Orientamos o casal na escolha das músicas, entradas e formação que melhor traduzem o estilo da cerimônia.",
-  },
-  {
-    icon: Users,
-    title: "Experiência e excelência",
-    text: "Músicos profissionais formados com vasta trajetória em concertos e casamentos inesquecíveis.",
-  },
 ];
 
 const videos = [
@@ -356,7 +336,7 @@ export default function Home() {
 
       <section id="sobre" className="trio-section bg-[#f7f3ef]">
         <div className="trio-container trio-about-grid">
-          <SectionReveal>
+          <SectionReveal className="trio-about-copy">
             <p className="trio-kicker">Sobre nós</p>
             <h2 className="trio-heading">Mais que música, criamos memórias.</h2>
             <p className="trio-copy">
@@ -365,17 +345,9 @@ export default function Home() {
             </p>
             <p className="trio-script">Sua história, nossa melodia.</p>
           </SectionReveal>
-          <div className="trio-pillars">
-            {pillars.map(({ icon: Icon, title, text }) => (
-              <SectionReveal key={title}>
-                <article className="trio-pillar">
-                  <Icon className="trio-feature-icon" />
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </article>
-              </SectionReveal>
-            ))}
-          </div>
+          <SectionReveal className="trio-about-visual">
+            <img src={lpAsset("about-couple-optimized.jpg")} alt="Casal caminhando na saída da cerimônia de casamento" />
+          </SectionReveal>
         </div>
       </section>
 
