@@ -459,16 +459,24 @@ export default function Home() {
       </section>
 
       <section id="momentos" className="trio-moments">
-        <div className="trio-container text-center">
-          <p className="trio-kicker">Cada momento, uma emoção</p>
-          <h2 className="trio-heading mx-auto">Do início ao fim, a trilha perfeita para sua cerimônia.</h2>
+        <div className="trio-container trio-moments-layout">
+          <div className="trio-moments-intro">
+            <p className="trio-kicker">Cada momento, uma emoção</p>
+            <h2 className="trio-heading">Do início ao fim, a trilha perfeita para sua cerimônia.</h2>
+            <p>
+              Cada entrada, pausa e celebração pede uma intenção musical própria. A cerimônia ganha fluidez quando a
+              trilha acompanha a história do casal do primeiro olhar à saída final.
+            </p>
+          </div>
           <div className="trio-moment-line">
             {ceremonyMoments.map((item, index) => (
-              <div className="trio-moment" key={item.title}>
+              <article className="trio-moment" key={item.title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{item.title}</strong>
-                <p>{item.text}</p>
-              </div>
+                <div>
+                  <strong>{item.title}</strong>
+                  <p>{item.text}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>

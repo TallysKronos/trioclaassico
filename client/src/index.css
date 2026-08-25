@@ -2398,8 +2398,70 @@ html {
 }
 
 .trio-moments {
-  background: #232424;
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(86px, 8vw, 132px);
+  background:
+    radial-gradient(circle at 16% 18%, rgb(166 98 63 / 0.18), transparent 28%),
+    radial-gradient(circle at 82% 76%, rgb(210 151 115 / 0.1), transparent 32%),
+    linear-gradient(135deg, #232424 0%, #2c2b2a 46%, #232424 100%);
   color: white;
+}
+
+.trio-moments::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(255 255 255 / 0.014) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at center, black, transparent 78%);
+  pointer-events: none;
+}
+
+.trio-moments::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(210 151 115 / 0.4), transparent);
+}
+
+.trio-moments-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1fr);
+  gap: clamp(42px, 6vw, 86px);
+  align-items: start;
+}
+
+.trio-moments-intro {
+  position: sticky;
+  top: 108px;
+  max-width: 440px;
+}
+
+.trio-moments-intro .trio-kicker {
+  color: #d29773;
+}
+
+.trio-moments-intro .trio-heading {
+  max-width: 520px;
+  color: #fbf7f2;
+  font-size: clamp(46px, 5vw, 74px);
+  line-height: 1.02;
+}
+
+.trio-moments-intro > p:not(.trio-kicker) {
+  max-width: 390px;
+  margin: 26px 0 0;
+  color: #cfc6bc;
+  font-size: 16px;
+  line-height: 1.78;
 }
 
 #midia .trio-copy {
@@ -2407,23 +2469,51 @@ html {
 }
 
 .trio-moment-line {
-  margin-top: 44px;
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 18px;
+  padding-left: 34px;
+}
+
+.trio-moment-line::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 18px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgb(210 151 115 / 0.72) 12%, rgb(210 151 115 / 0.28) 88%, transparent);
 }
 
 .trio-moment {
   position: relative;
-  display: flex;
-  min-height: 210px;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  border: 1px solid rgb(166 98 63 / 0.24);
-  border-radius: 14px;
-  padding: 18px 14px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-items: start;
+  gap: 18px;
+  width: min(100%, 620px);
+  border: 1px solid rgb(210 151 115 / 0.18);
+  border-radius: 0;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0.018)),
+    rgb(255 255 255 / 0.018);
+  padding: 22px 24px;
   color: #b9b0a7;
+  box-shadow: 0 22px 70px rgb(0 0 0 / 0.18);
+  backdrop-filter: blur(8px);
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.trio-moment:nth-child(even) {
+  margin-left: clamp(36px, 7vw, 96px);
+}
+
+.trio-moment:hover {
+  transform: translateX(6px);
+  border-color: rgb(210 151 115 / 0.52);
+  background:
+    linear-gradient(135deg, rgb(166 98 63 / 0.14), rgb(255 255 255 / 0.034)),
+    rgb(255 255 255 / 0.028);
 }
 
 .trio-moment:not(:last-child)::after {
@@ -2440,29 +2530,109 @@ html {
   position: relative;
   z-index: 1;
   display: grid;
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   place-items: center;
-  border: 1px solid #a6623f;
+  border: 1px solid rgb(210 151 115 / 0.72);
   border-radius: 999px;
   background: #232424;
-  color: #a6623f;
+  color: #d29773;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 8px rgb(35 36 36 / 0.92);
 }
 
 .trio-moment p {
-  max-width: 170px;
-  margin: 0;
-  font-size: 12px;
+  max-width: 440px;
+  margin: 10px 0 0;
+  color: #cfc6bc;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .trio-moment strong {
   color: #fbf7f2;
-  font-size: 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(26px, 2.2vw, 34px);
+  font-weight: 400;
   line-height: 1.2;
+}
+
+@media (max-width: 1080px) {
+  .trio-moments-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .trio-moments-intro {
+    position: relative;
+    top: auto;
+    max-width: 720px;
+  }
+
+  .trio-moments-intro > p:not(.trio-kicker) {
+    max-width: 620px;
+  }
+
+  .trio-moment {
+    width: 100%;
+  }
+
+  .trio-moment:nth-child(even) {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .trio-moments {
+    padding-block: 72px;
+  }
+
+  .trio-moments-intro .trio-heading {
+    inline-size: auto;
+    max-width: 100%;
+    font-size: clamp(38px, 11vw, 48px);
+  }
+
+  .trio-moments-intro > p:not(.trio-kicker) {
+    font-size: 15px;
+  }
+
+  .trio-moment-line {
+    gap: 14px;
+    padding-left: 22px;
+  }
+
+  .trio-moment-line::before {
+    left: 11px;
+  }
+
+  .trio-moment {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px 16px;
+  }
+
+  .trio-moment:hover {
+    transform: none;
+  }
+
+  .trio-moment span {
+    width: 42px;
+    height: 42px;
+    box-shadow: 0 0 0 6px rgb(35 36 36 / 0.92);
+    font-size: 11px;
+  }
+
+  .trio-moment strong {
+    font-size: 25px;
+  }
+
+  .trio-moment p {
+    font-size: 13px;
+  }
 }
 
 .trio-gallery-strip {
@@ -3113,8 +3283,7 @@ html {
   }
 
   .trio-moment-line {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
+    padding-left: 26px;
   }
 
   .trio-moment:not(:last-child)::after {
@@ -3125,7 +3294,6 @@ html {
 @media (max-width: 768px) {
   .trio-formation-grid,
   .trio-member-grid,
-  .trio-moment-line,
   .trio-story-grid,
   .trio-testimonial-grid,
   .trio-process-grid,
@@ -3151,7 +3319,6 @@ html {
 
   .trio-formation-grid::-webkit-scrollbar,
   .trio-member-grid::-webkit-scrollbar,
-  .trio-moment-line::-webkit-scrollbar,
   .trio-story-grid::-webkit-scrollbar,
   .trio-testimonial-grid::-webkit-scrollbar,
   .trio-process-grid::-webkit-scrollbar,
@@ -3166,7 +3333,6 @@ html {
 
   .trio-formation-grid > *,
   .trio-member-grid > *,
-  .trio-moment-line > *,
   .trio-story-grid > *,
   .trio-testimonial-grid > *,
   .trio-process-grid > *,
@@ -3193,7 +3359,6 @@ html {
 
   .trio-formation-card,
   .trio-member-card,
-  .trio-moment,
   .trio-story-card,
   .trio-testimonial-card,
   .trio-process-step,
@@ -3207,7 +3372,6 @@ html {
     min-height: auto;
   }
 
-  .trio-moment,
   .v2-timeline article {
     flex-basis: min(78vw, 300px);
   }
