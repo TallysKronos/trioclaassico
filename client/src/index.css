@@ -360,7 +360,7 @@
   width: min(720px, 86vw);
   height: 174px;
   transform: translateX(-50%);
-  background: url("/lp-assets/vector-background.svg") center / contain no-repeat;
+  background: url("../lp-assets/vector-background.svg") center / contain no-repeat;
   opacity: 0.45;
   pointer-events: none;
 }
@@ -1461,7 +1461,7 @@ html {
   width: 220px;
   height: 16px;
   position: relative;
-  background: url("/lp-assets/musical-divider.svg") center / contain no-repeat;
+  background: url("../lp-assets/musical-divider.svg") center / contain no-repeat;
   opacity: 0.78;
 }
 
@@ -1639,7 +1639,7 @@ html {
   bottom: -30px;
   width: 220px;
   height: 54px;
-  background: url("/lp-assets/vector-background.svg") center / contain no-repeat;
+  background: url("../lp-assets/vector-background.svg") center / contain no-repeat;
   opacity: 0.95;
   pointer-events: none;
 }
@@ -1707,7 +1707,7 @@ html {
   width: min(680px, 80vw);
   height: 170px;
   transform: translateX(-50%);
-  background: url("/lp-assets/vector-background.svg") center / contain no-repeat;
+  background: url("../lp-assets/vector-background.svg") center / contain no-repeat;
   opacity: 0.7;
   pointer-events: none;
 }

@@ -30,9 +30,10 @@ import {
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 
-const asset = (name: string) => `/figma-assets/${name}`;
-const lpAsset = (name: string) => `/lp-assets/${name}`;
-const logoAsset = "/lp-assets/trio-classico-logo-transparent-cropped.png";
+const pagePath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+const asset = (name: string) => pagePath(`figma-assets/${name}`);
+const lpAsset = (name: string) => pagePath(`lp-assets/${name}`);
+const logoAsset = pagePath("lp-assets/trio-classico-logo-transparent-cropped.png");
 
 const navItems = [
   { label: "Início", href: "#inicio" },
@@ -41,7 +42,7 @@ const navItems = [
   { label: "Momentos", href: "#momentos" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
-  { label: "V1", href: "/" },
+  { label: "V1", href: pagePath("v1") },
 ];
 
 const benefits = [
