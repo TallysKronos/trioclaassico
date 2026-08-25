@@ -160,7 +160,7 @@ const processSteps = [
   { icon: "frame-14.svg", step: "02", title: "Ouvimos a história", text: "Conversamos sobre o casal, referências musicais e momentos que precisam ser lembrados." },
   { icon: "frame-16.svg", step: "03", title: "Consultoria Musical", text: "Orientamos vocês nas escolhas musicais e na construção da experiência da cerimônia." },
   { icon: "frame-17.svg", step: "04", title: "Ensaios", text: "Ensaiamos e gravamos para os noivos acompanharem o processo." },
-  { icon: "frame-5.svg", step: "05", title: "Vivemos esse momento", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
+  { icon: "step-5.svg", step: "05", title: "Vivemos esse momento", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
 ];
 
 function BudgetDialog({ children }: { children: React.ReactNode }) {
