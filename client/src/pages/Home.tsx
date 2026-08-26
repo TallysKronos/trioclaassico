@@ -361,9 +361,6 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-col gap-4">
               <button className="trio-text-link">Ver mais vídeos <ChevronRight /></button>
-              <button className="trio-text-link" onClick={() => document.querySelector("#integrantes")?.scrollIntoView({ behavior: "smooth" })}>
-                Conhecer integrantes <ChevronRight />
-              </button>
             </div>
           </SectionReveal>
 
