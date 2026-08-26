@@ -630,8 +630,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="trio-section bg-[#f7f3ef]">
-        <div className="trio-container text-center">
+      <section className="trio-section trio-process-section bg-[#f7f3ef]">
+        <div className="trio-container trio-process-content">
           <p className="trio-kicker">Como funciona</p>
           <h2 className="trio-heading mx-auto">Do primeiro contato ao grande dia.</h2>
           <div className="trio-process-grid mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-5">

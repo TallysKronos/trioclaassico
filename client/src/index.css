@@ -3043,6 +3043,28 @@ html {
   text-transform: uppercase;
 }
 
+.trio-process-section {
+  text-align: center;
+}
+
+.trio-process-content {
+  display: grid;
+  justify-items: center;
+}
+
+.trio-process-content .trio-kicker {
+  justify-content: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.trio-process-content .trio-heading {
+  max-width: 680px;
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
 .trio-gallery-note {
   max-width: 520px;
   margin: 18px 0 0;
@@ -3066,6 +3088,7 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  text-align: center;
 }
 
 .trio-process-step span {
@@ -3097,15 +3120,20 @@ html {
 
 .trio-process-step h3 {
   margin: 0;
+  max-width: 220px;
   font-size: 24px;
   font-weight: 400;
+  line-height: 1.08;
+  text-wrap: balance;
 }
 
 .trio-process-step p {
-  max-width: 210px;
+  max-width: 230px;
   margin: 0;
   color: #52483e;
   font-size: 14px;
+  line-height: 1.58;
+  text-wrap: pretty;
 }
 
 .trio-cta {
