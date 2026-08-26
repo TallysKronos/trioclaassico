@@ -2261,15 +2261,29 @@ html {
 }
 
 .trio-formation-card > img {
+  display: block;
   width: 100%;
   height: 170px;
   object-fit: cover;
+}
+
+.trio-formation-card [data-slot="card-header"] {
+  padding-top: 24px;
 }
 
 .trio-formation-card [data-slot="card-title"] {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 28px;
   font-weight: 400;
+}
+
+.trio-formation-card [data-slot="card-content"] {
+  padding-top: 4px;
+}
+
+.trio-formation-card [data-slot="card-footer"] {
+  padding-top: 22px;
+  padding-bottom: 26px;
 }
 
 .trio-formation-card p {
