@@ -2733,6 +2733,13 @@ html {
   display: grid;
   place-items: center;
   min-height: clamp(290px, 29vw, 390px);
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.trio-testimonial-feature:active {
+  cursor: grabbing;
 }
 
 .trio-testimonial-content {

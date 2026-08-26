@@ -25,7 +25,7 @@ import {
   Quote,
   X,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { coupleStories } from "@/data/stories";
 
@@ -220,7 +220,7 @@ function BudgetDialog({ children }: { children: React.ReactNode }) {
           <p className="mt-4 text-xs leading-relaxed text-[#82674f]">
             Usaremos essas informações apenas para retornar com uma proposta para a cerimônia.
           </p>
-          <Button className="mt-5 h-12 w-full rounded bg-[#a6623f] text-white hover:bg-[#8e795e]">Enviar pedido de orçamento</Button>
+          <Button className="mt-5 h-12 w-full rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">Enviar pedido de orçamento</Button>
         </form>
       </DialogContent>
     </Dialog>
@@ -247,8 +247,29 @@ export default function Home() {
   const [videoOpen, setVideoOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(gallery[0]);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const testimonialDragStart = useRef<number | null>(null);
 
   const currentTestimonial = testimonials[testimonialIndex];
+  const goToPreviousTestimonial = () => {
+    setTestimonialIndex((index) => (index - 1 + testimonials.length) % testimonials.length);
+  };
+  const goToNextTestimonial = () => {
+    setTestimonialIndex((index) => (index + 1) % testimonials.length);
+  };
+  const handleTestimonialPointerUp = (positionX: number) => {
+    if (testimonialDragStart.current === null) return;
+
+    const distance = testimonialDragStart.current - positionX;
+    testimonialDragStart.current = null;
+
+    if (Math.abs(distance) < 36) return;
+
+    if (distance > 0) {
+      goToNextTestimonial();
+    } else {
+      goToPreviousTestimonial();
+    }
+  };
   const heroStyle = useMemo(
     () => ({
       backgroundImage: `linear-gradient(90deg, rgba(0,0,0,.78), rgba(0,0,0,.28) 55%, rgba(0,0,0,.55)), url(${asset("raw-04.jpeg")})`,
@@ -272,7 +293,7 @@ export default function Home() {
         </nav>
         <div className="flex items-center gap-3">
           <BudgetDialog>
-            <Button className="hidden rounded bg-[#a6623f] px-6 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#8e795e] md:inline-flex">
+            <Button className="hidden rounded bg-[#a6623f] px-6 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#704d3c] md:inline-flex">
               Faça seu orçamento
             </Button>
           </BudgetDialog>
@@ -316,7 +337,7 @@ export default function Home() {
             <p>Trilha ao vivo para cerimônias de casamento, criada com sensibilidade, elegância e atenção a cada momento.</p>
             <div className="flex flex-wrap gap-4 pt-3">
               <BudgetDialog>
-                <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#8e795e]">
+                <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#704d3c]">
                   Faça seu orçamento
                   <ChevronRight data-icon="inline-end" />
                 </Button>
@@ -419,7 +440,7 @@ export default function Home() {
                 </CardContent>
                 <CardFooter>
                   <BudgetDialog>
-                    <Button variant="outline" className="w-full rounded border-[#d8cdbd] bg-transparent">
+                    <Button variant="outline" className="w-full rounded border-[#d8cdbd] bg-transparent hover:border-[#704d3c] hover:bg-[#704d3c] hover:text-white">
                       Faça seu orçamento
                     </Button>
                   </BudgetDialog>
@@ -513,7 +534,7 @@ export default function Home() {
           </div>
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="mx-auto mt-8 flex rounded bg-[#a6623f] text-white hover:bg-[#8e795e]">
+              <Button className="mx-auto mt-8 flex rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">
                 Ver espaço da galeria
               </Button>
             </DialogTrigger>
@@ -567,7 +588,7 @@ export default function Home() {
             <button
               type="button"
               className="trio-testimonial-arrow"
-              onClick={() => setTestimonialIndex((index) => (index - 1 + testimonials.length) % testimonials.length)}
+              onClick={goToPreviousTestimonial}
               aria-label="Ver depoimento anterior"
             >
               <ChevronLeft />
@@ -577,6 +598,13 @@ export default function Home() {
               <motion.article
                 key={currentTestimonial.name}
                 className="trio-testimonial-feature"
+                onPointerDown={(event) => {
+                  testimonialDragStart.current = event.clientX;
+                }}
+                onPointerUp={(event) => handleTestimonialPointerUp(event.clientX)}
+                onPointerCancel={() => {
+                  testimonialDragStart.current = null;
+                }}
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -18 }}
@@ -606,7 +634,7 @@ export default function Home() {
             <button
               type="button"
               className="trio-testimonial-arrow"
-              onClick={() => setTestimonialIndex((index) => (index + 1) % testimonials.length)}
+              onClick={goToNextTestimonial}
               aria-label="Ver próximo depoimento"
             >
               <ChevronRight />
@@ -654,7 +682,7 @@ export default function Home() {
             <p>Conte-nos um pouco sobre o seu casamento.</p>
             <div className="trio-cta-actions">
               <BudgetDialog>
-                <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#8e795e]">
+                <Button className="h-12 rounded bg-[#a6623f] px-7 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-[#704d3c]">
                   Faça seu orçamento
                   <ChevronRight data-icon="inline-end" />
                 </Button>
