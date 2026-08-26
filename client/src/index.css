@@ -2974,72 +2974,64 @@ html {
   color: #52483e;
 }
 
-.trio-stories-layout {
-  position: relative;
-}
-
-.trio-stories-layout::before {
-  content: "";
-  position: absolute;
-  top: 56px;
-  right: max(24px, calc((100vw - 1280px) / 2));
-  width: min(520px, 45vw);
-  height: 150px;
-  background: url("../lp-assets/vector-background.svg") center / contain no-repeat;
-  opacity: 0.18;
-  pointer-events: none;
-}
-
 .trio-stories-heading {
-  position: relative;
-  z-index: 1;
-  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
 }
 
-.trio-stories-heading .trio-heading,
-.trio-stories-heading .trio-copy {
+.trio-stories-heading .trio-kicker {
+  justify-content: center;
+}
+
+.trio-stories-heading .trio-heading {
+  margin-inline: auto;
   max-width: 720px;
+  text-align: center;
+}
+
+.trio-stories-heading .trio-copy {
+  margin-inline: auto;
+  max-width: 620px;
+  text-align: center;
 }
 
 .trio-story-grid {
-  position: relative;
-  z-index: 1;
-  margin-top: 48px;
+  margin-top: 44px;
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
-  gap: clamp(24px, 4vw, 54px);
-  align-items: stretch;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
 }
 
 .trio-story-card {
-  position: relative;
   overflow: hidden;
-  border: 1px solid rgb(166 98 63 / 0.18);
-  background: transparent;
+  border: 1px solid #d7ccc2;
+  border-radius: 16px;
+  background: #fbf7f2;
   color: #2c2b2a;
   text-align: left;
-  transition: border-color 220ms ease, transform 220ms ease;
+  box-shadow: 0 24px 74px rgb(69 61 47 / 0.08);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
 }
 
 .trio-story-card:hover {
-  border-color: rgb(166 98 63 / 0.55);
-  transform: translateY(-3px);
+  border-color: #a6623f;
+  transform: translateY(-5px);
+  box-shadow: 0 28px 82px rgb(69 61 47 / 0.14);
 }
 
 .trio-story-card img {
   width: 100%;
+  height: 225px;
   object-fit: cover;
-  transition: transform 300ms ease, filter 300ms ease;
+  transition: transform 260ms ease;
 }
 
 .trio-story-card:hover img {
-  transform: scale(1.035);
-  filter: saturate(1.06);
+  transform: scale(1.04);
 }
 
 .trio-story-card div {
-  position: relative;
-  z-index: 1;
+  padding: 24px;
 }
 
 .trio-story-card small {
@@ -3075,127 +3067,6 @@ html {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.trio-story-card[data-featured="true"] {
-  min-height: 560px;
-  border: 0;
-  background: #232424;
-  color: white;
-}
-
-.trio-story-card[data-featured="true"] img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-}
-
-.trio-story-card[data-featured="true"]::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.74));
-}
-
-.trio-story-card[data-featured="true"] div {
-  position: absolute;
-  inset: auto 34px 34px;
-  max-width: 620px;
-}
-
-.trio-story-card[data-featured="true"] small,
-.trio-story-card[data-featured="true"] span {
-  color: #d29773;
-}
-
-.trio-story-card[data-featured="true"] h3 {
-  color: #fbf7f2;
-  font-size: clamp(50px, 5vw, 76px);
-}
-
-.trio-story-card[data-featured="true"] p {
-  max-width: 560px;
-  color: #e5ddd3;
-  font-size: 17px;
-}
-
-.trio-story-card:not([data-featured="true"]) {
-  display: grid;
-  grid-template-columns: 140px minmax(0, 1fr);
-  min-height: 0;
-  border-inline: 0;
-  border-top: 1px solid rgb(166 98 63 / 0.18);
-  border-bottom: 0;
-  padding-block: 22px;
-}
-
-.trio-story-card:not([data-featured="true"]):last-child {
-  border-bottom: 1px solid rgb(166 98 63 / 0.18);
-}
-
-.trio-story-card:not([data-featured="true"]) img {
-  height: 160px;
-}
-
-.trio-story-card:not([data-featured="true"]) div {
-  padding-left: 22px;
-}
-
-@media (max-width: 980px) {
-  .trio-story-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .trio-story-card[data-featured="true"] {
-    min-height: 470px;
-  }
-}
-
-@media (max-width: 768px) {
-  .trio-stories-heading .trio-heading,
-  .trio-stories-heading .trio-copy {
-    inline-size: auto;
-    max-width: 100%;
-  }
-
-  .trio-story-grid {
-    display: grid;
-    gap: 0;
-    margin-top: 34px;
-  }
-
-  .trio-story-card[data-featured="true"] {
-    min-height: 430px;
-  }
-
-  .trio-story-card[data-featured="true"] div {
-    inset: auto 22px 24px;
-  }
-
-  .trio-story-card[data-featured="true"] h3 {
-    font-size: clamp(42px, 12vw, 56px);
-  }
-
-  .trio-story-card:not([data-featured="true"]) {
-    grid-template-columns: 104px minmax(0, 1fr);
-    padding-block: 18px;
-  }
-
-  .trio-story-card:not([data-featured="true"]) img {
-    height: 128px;
-  }
-
-  .trio-story-card:not([data-featured="true"]) div {
-    padding-left: 16px;
-  }
-
-  .trio-story-card:not([data-featured="true"]) h3 {
-    font-size: 30px;
-  }
-
-  .trio-story-card:not([data-featured="true"]) p {
-    font-size: 13px;
-  }
 }
 
 .trio-process-section {
@@ -3552,6 +3423,7 @@ html {
 @media (max-width: 768px) {
   .trio-formation-grid,
   .trio-member-grid,
+  .trio-story-grid,
   .trio-testimonial-grid,
   .trio-process-grid,
   .v2-formation-grid,
@@ -3576,6 +3448,7 @@ html {
 
   .trio-formation-grid::-webkit-scrollbar,
   .trio-member-grid::-webkit-scrollbar,
+  .trio-story-grid::-webkit-scrollbar,
   .trio-testimonial-grid::-webkit-scrollbar,
   .trio-process-grid::-webkit-scrollbar,
   .v2-formation-grid::-webkit-scrollbar,
@@ -3589,6 +3462,7 @@ html {
 
   .trio-formation-grid > *,
   .trio-member-grid > *,
+  .trio-story-grid > *,
   .trio-testimonial-grid > *,
   .trio-process-grid > *,
   .v2-formation-grid > *,
@@ -3614,6 +3488,7 @@ html {
 
   .trio-formation-card,
   .trio-member-card,
+  .trio-story-card,
   .trio-testimonial-card,
   .trio-process-step,
   .v2-formation-card,
