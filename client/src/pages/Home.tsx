@@ -535,17 +535,17 @@ export default function Home() {
       </section>
 
       <section id="historias" className="trio-section bg-[#f7f3ef]">
-        <div className="trio-container">
-          <SectionReveal className="text-center">
+        <div className="trio-container trio-stories-layout">
+          <SectionReveal className="trio-stories-heading">
             <p className="trio-kicker">Histórias dos casais</p>
-            <h2 className="trio-heading mx-auto">Cada casamento pode virar uma memória para ler, ver e ouvir.</h2>
-            <p className="trio-copy mx-auto">
+            <h2 className="trio-heading">Cada casamento pode virar uma memória para ler, ver e ouvir.</h2>
+            <p className="trio-copy">
               A ideia é que cada casal tenha uma página com relato da cerimônia, fotos e a música que marcou aquele dia.
             </p>
           </SectionReveal>
           <div className="trio-story-grid">
-            {coupleStories.map((story) => (
-              <a className="trio-story-card" key={story.slug} href={pagePath(`historias/${story.slug}`)}>
+            {coupleStories.map((story, index) => (
+              <a className="trio-story-card" data-featured={index === 0} key={story.slug} href={pagePath(`historias/${story.slug}`)}>
                 <img src={asset(story.image)} alt={story.name} />
                 <div>
                   <small>{story.location}</small>
