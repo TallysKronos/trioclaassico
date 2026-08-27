@@ -43,7 +43,6 @@ const navItems = [
   { label: "Sobre", href: "#sobre" },
   { label: "Formações", href: "#formacoes" },
   { label: "Integrantes", href: "#integrantes" },
-  { label: "Galeria", href: "#galeria" },
   { label: "Histórias", href: "#historias" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
@@ -129,14 +128,6 @@ const members = [
     image: "raw-15.png",
     text: "Eu sustento a emoção com o violoncelo, dando corpo, elegância e intensidade às passagens mais simbólicas do grande dia.",
   },
-];
-
-const gallery = [
-  { label: "Making of musical" },
-  { label: "Entrada da noiva" },
-  { label: "Cerimônia ao ar livre" },
-  { label: "Troca de alianças" },
-  { label: "Saída dos noivos" },
 ];
 
 const testimonials = coupleStories.map((story) => ({
@@ -246,7 +237,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(videos[0]);
   const [videoOpen, setVideoOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(gallery[0]);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const testimonialDragStart = useRef<number | null>(null);
 
@@ -486,58 +476,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="galeria" className="trio-section bg-[#eee9e3]">
-        <div className="trio-container">
-          <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="trio-kicker">Casamentos reais</p>
-              <h2 className="trio-heading">Galeria em produção.</h2>
-              <p className="trio-gallery-note">
-                Em breve, este espaço receberá registros reais de cerimônias, bastidores e momentos musicais do Trio Clássico.
-              </p>
-            </div>
-            <div className="flex gap-2">
-              <Button variant="outline" size="icon" className="rounded-full" disabled>
-                <ChevronLeft />
-              </Button>
-              <Button variant="outline" size="icon" className="rounded-full" disabled>
-                <ChevronRight />
-              </Button>
-            </div>
-          </div>
-          <div className="trio-gallery-strip">
-            {gallery.map((item) => (
-              <button
-                key={item.label}
-                className="trio-gallery-thumb trio-gallery-empty"
-                data-active={selectedImage.label === item.label}
-                onClick={() => setSelectedImage(item)}
-              >
-                <span>{item.label}</span>
-                <small>Em breve</small>
-              </button>
-            ))}
-          </div>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="mx-auto mt-8 flex rounded bg-[#a6623f] text-white hover:bg-[#704d3c]">
-                Ver espaço da galeria
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl border-[#d7ccc2] bg-[#f7f3ef]">
-              <DialogHeader>
-                <DialogTitle className="font-serif text-3xl font-normal">{selectedImage.label}</DialogTitle>
-                <DialogDescription>Espaço reservado para os registros que serão produzidos pelo Trio Clássico.</DialogDescription>
-              </DialogHeader>
-              <div className="trio-gallery-modal-empty">
-                <Music />
-                <p>Conteúdo em produção</p>
-              </div>
-            </DialogContent>
-          </Dialog>
-        </div>
-      </section>
-
       <section id="historias" className="trio-section bg-[#f7f3ef]">
         <div className="trio-container">
           <SectionReveal className="trio-stories-heading">
@@ -705,7 +643,6 @@ export default function Home() {
           </div>
           <div className="trio-footer-list">
             <strong>Informações</strong>
-            <a href="#galeria">Galeria</a>
             <a href="#historias">Histórias</a>
             <a href="#depoimentos">Depoimentos</a>
             <a href="#contato">Contato</a>
