@@ -17,12 +17,14 @@ import {
   ChevronLeft,
   ChevronRight,
   Instagram,
+  Heart,
   Mail,
   Menu,
   Music,
   Phone,
   Play,
   Quote,
+  Users,
   X,
 } from "lucide-react";
 import { useMemo, useRef, useState } from "react";
@@ -76,6 +78,24 @@ const formations = [
     subtitle: "Violino, viola e violoncelo, acompanhados de voz e piano",
     text: "Sonoridade refinada, com presença e elegância. Uma sensação de uma mini orquestra na sua cerimônia.",
     ideal: "Ideal para cerimônias com estética clássica, sofisticada e emocional.",
+  },
+];
+
+const aboutPillars = [
+  {
+    icon: Music,
+    title: "Direção musical da cerimônia",
+    text: "Acompanhamos entradas, transições e momentos simbólicos para que a música sustente o rito com naturalidade.",
+  },
+  {
+    icon: Heart,
+    title: "Consultoria musical",
+    text: "Orientamos o casal na escolha das músicas, entradas e formação que melhor traduzem o estilo da cerimônia.",
+  },
+  {
+    icon: Users,
+    title: "Presença profissional no grande dia",
+    text: "Chegada organizada, cuidado com cronograma e execução preparada para ambientes internos ou externos.",
   },
 ];
 
@@ -368,6 +388,15 @@ export default function Home() {
           </SectionReveal>
           <SectionReveal className="trio-about-visual">
             <img src={lpAsset("about-couple-optimized.jpg")} alt="Casal caminhando na saída da cerimônia de casamento" />
+          </SectionReveal>
+          <SectionReveal className="trio-about-pillars">
+            {aboutPillars.map(({ icon: Icon, title, text }) => (
+              <article key={title} className="trio-about-pillar">
+                <Icon />
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </article>
+            ))}
           </SectionReveal>
         </div>
       </section>
