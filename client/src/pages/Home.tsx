@@ -43,7 +43,6 @@ const navItems = [
   { label: "Sobre", href: "#sobre" },
   { label: "Formações", href: "#formacoes" },
   { label: "Integrantes", href: "#integrantes" },
-  { label: "Momentos", href: "#momentos" },
   { label: "Galeria", href: "#galeria" },
   { label: "Histórias", href: "#historias" },
   { label: "Depoimentos", href: "#depoimentos" },
@@ -132,16 +131,6 @@ const members = [
   },
 ];
 
-const ceremonyMoments = [
-  { title: "Padrinhos", text: "A celebração da união e a presença de quem faz parte da história do casal." },
-  { title: "Noivo", text: "Expectativa, emoção e a realização de estar prestes a viver um dos momentos mais importantes da sua vida." },
-  { title: "Noiva", text: "O ápice da expectativa. Um momento de encantamento, emoção e grandeza." },
-  { title: "Troca das Alianças", text: "Amor, compromisso e a promessa de uma vida compartilhada." },
-  { title: "Votos", text: "Intimidade, verdade e a expressão dos sentimentos mais profundos do casal." },
-  { title: "Beijo", text: "A celebração do amor e o instante em que a promessa se transforma em realidade." },
-  { title: "Saída dos Noivos", text: "Alegria, celebração e o início de uma nova história juntos." },
-];
-
 const gallery = [
   { label: "Making of musical" },
   { label: "Entrada da noiva" },
@@ -158,14 +147,6 @@ const testimonials = coupleStories.map((story) => ({
   text: story.quote,
   song: story.song,
 }));
-
-const processSteps = [
-  { icon: "frame-13.svg", step: "PASSO 01", title: "Faça seu orçamento", text: "Recebemos as informações principais da cerimônia para preparar uma proposta personalizada." },
-  { icon: "frame-14.svg", step: "PASSO 02", title: "Conte sua história", text: "Entendemos estilo, cerimônia e referências." },
-  { icon: "frame-16.svg", step: "PASSO 03", title: "Consultoria Musical", text: "Orientamos vocês nas escolhas musicais e na construção da experiência da cerimônia." },
-  { icon: "frame-17.svg", step: "PASSO 04", title: "Ensaios", text: "Ensaiamos e gravamos para os noivos acompanharem o processo." },
-  { icon: "step-5.svg", step: "PASSO 05", title: "Vivemos esse momento", text: "Chegamos preparados para conduzir cada entrada, pausa e celebração com presença." },
-];
 
 function BudgetDialog({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
@@ -365,9 +346,9 @@ export default function Home() {
               <Button
                 variant="ghost"
                 className="h-12 rounded px-4 text-xs font-semibold uppercase tracking-[.18em] text-white hover:bg-white/10 hover:text-white"
-                onClick={() => document.querySelector("#momentos")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.querySelector("#historias")?.scrollIntoView({ behavior: "smooth" })}
               >
-                Veja momentos
+                Ver histórias
                 <ChevronRight data-icon="inline-end" />
               </Button>
             </div>
@@ -498,30 +479,6 @@ export default function Home() {
                   <span>{member.name}</span>
                   <small>{member.role}</small>
                   <p>{member.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="momentos" className="trio-moments">
-        <div className="trio-container trio-moments-layout">
-          <div className="trio-moments-intro">
-            <p className="trio-kicker">Cada momento, uma emoção</p>
-            <h2 className="trio-heading">Do início ao fim, a trilha perfeita para sua cerimônia.</h2>
-            <p>
-              Cada entrada, pausa e celebração pede uma intenção musical própria. A cerimônia ganha fluidez quando a
-              trilha acompanha a história do casal do primeiro olhar à saída final.
-            </p>
-          </div>
-          <div className="trio-moment-line">
-            {ceremonyMoments.map((item, index) => (
-              <article className="trio-moment" key={item.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
-                  <strong>{item.title}</strong>
-                  <p>{item.text}</p>
                 </div>
               </article>
             ))}
@@ -679,25 +636,6 @@ export default function Home() {
                 aria-current={index === testimonialIndex}
                 onClick={() => setTestimonialIndex(index)}
               />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="trio-section trio-process-section bg-[#f7f3ef]">
-        <div className="trio-container trio-process-content">
-          <p className="trio-kicker">Como funciona</p>
-          <h2 className="trio-heading mx-auto">Do primeiro contato ao grande dia.</h2>
-          <div className="trio-process-grid mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-5">
-            {processSteps.map(({ icon, step, title, text }) => (
-              <div key={step} className="trio-process-step">
-                <span>
-                  <img src={lpAsset(icon)} alt="" />
-                </span>
-                <strong>{step}</strong>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
             ))}
           </div>
         </div>
